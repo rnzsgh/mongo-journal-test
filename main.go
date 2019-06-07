@@ -38,7 +38,7 @@ func main() {
 	for i := 0; i < 1000; i++ {
 		ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 		if _, err = client.Database("work").Collection("test").InsertOne(ctx, bson.M{"name": "pi", "value": 3.14159}); err != nil {
-
+			log.Errorf("Problem inserting doc: %v", err)
 		}
 	}
 
